@@ -1,0 +1,85 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/jasper_mall
+    username: root
+    password: root
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mail:
+    host: smtp.qq.com
+    username: b2190320413@vip.qq.com
+    password: gslttxnlbqemebfj
+    default-encoding: utf-8
+    properties:
+      smtp:
+        ssl:
+          enable: false
+          required: false
+      debug: true
+  rabbitmq:
+    host: 124.220.103.148
+    port: 5672
+    username: root
+    password: jasper
+    virtual-host: /
+  data:
+    redis:
+      password: root
+      host: 124.220.103.148
+      port: 6379
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: 100ms
+      key:
+        resourceList: 'user:resourceList'
+      expire:
+        common: 43200 # 12小时
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    db-config:
+      logic-delete-field: is_deleted
+logging:
+  level:
+    com.jasper.mapper: debug
+server:
+  port: 8082
+jwt:
+  tokenHeader: Authorization  #the header that storage jwt
+  expiration: 604800
+  tokenHead: 'Bearer' # the head of jwt
+security:
+  ignored:
+    urls:
+    - "/"
+    - "/*.html"
+    - "/favicon.ico"
+    - "/static/**"
+    - "/swagger-resources/**"
+    - "/v2/api-docs/**"
+    - "/webService/user/logout"
+    - "/webService/user/login"
+    - "/webService/user/register/**"
+    - "/webService/user/getUserByUsername/**"
+    - "webService/user/getUserByEmail/**"
+    - "webService/user/getUserByEmail"
+    - "/webService/user/code/**"
+    - "/webService/goods/**"
+order:
+  delay:
+    time: 120000 # 毫秒 15分钟
+alipay:
+  appId: 9021000125667891
+  appPrivateKey: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQClaKsno8+jMczk2KygeGOB9ehY4/i7eN7lQwTRK9FD8nCXZLyr0iLk5Ne5zvebji5AgnFxa7DE8C6W0tjtP46iVwu6kjGBnBKPeBlN0sSKVRUXp+Mz3+qgFCo5T7Czo1EAVcTHyemOb1Zeusob/IGD9iDcttPLCGe7kfb/g+6V6y652jfKon0hCvzMOS5qqcaqS+Ql6MN7V9/8X6D4plvkTU+ksNAhYE50UWqmMm9tpaG4btdQIcUoXbdfetrQes2d2+EgbZQ52H2AsV08WcdniFmbpkPHg280aJb/G8abRpAPBY/FYHlWTLl3zUboXWlE/8rv8B5T4ZaseNtY+zTdAgMBAAECggEAWt40YHNyZwG9wN5zfziD2epguSyMAVl2gdYeeFatALnYNqNFrtKjDsHU7SORDSi/qfq/HYL+ukIEJiEwwK0Qy4gsTlNv1PcLjzt4EzO9ew0gqD036NCTEVvikleACD+pCRkVIHiA0RnDBglxbIx8DiWRig76LOiyK+4VFevBjyOdd6j245rnPo8qzf4H2zIari820M9/lRCqjD7Z7TgmlHPvm6eFouajmwrtSXN0RXxwZiwH/y9NG1YiIb9lrmrt3h5TF+7XTVzpnnwddB7JAnjOqug6M04I4EBJrneBJyQ58hhcuieEuL/ReGBQ4El5h9/dO6ngtzA8JqCnXF16QQKBgQD16XylFBRyJuvmw6CdlaM5EbmaamWV1rb9GD3kVx5c6wQFsyje7EEZL+W73gdT37rskg/fSuAFd2cjJDDO+2CMuo6SNVSP5v/UgESHOI3kbq6+Lw06znj52cBPOrB4YzAITPrYRVi81lUHZ3zh8x82GkLPqKy/upMLXy82WI8QEQKBgQCsMcFWPb+lnQGab/oaEEN76PpZt3xSKnJX9ZemO3sDfBLQkeEgnD5pnCzEO03CWKH18ZYnAVuvlqjhCk7oIb/l6JHLl6RcLDEoZeMTxm5TUtPswaBJecScSg9rPHxuLSDE0iF6lKRRZGkUDWoarV4KxQT5i/ioF7twd8DJ2SUkDQKBgGDrw4q0nVJYcMWk+NrjLU/C4qovoRYraDfcpBgpFfh9UDqG4GbsKsQokp025yBxn5S6BLN3KVA+PVImY25QuT7+EE8j4c5Ntysj2t6ItbQAw7KFjOtOkXO4FQmlEgSA41+CJ6OxwUW8HAstCJVtYzHJq+d4jY2LlYT34P3Eba5hAoGAVkDmE4kCwraO4wlMQln7M8pT/TTH9XCFrkG7IO2ShQBVfFxWZLtfGA++7Ny36q3zEvtct1Ua1C2nknJTbDvboBKLVWw0TGdmiFHhGTrAcMSAm4ux+pwgPBls985oldfNHkoTsw9Z79tYN08w4wQMo2BlSYsvlyOsJH4X+APpctECgYAk9+N1044Nrc3CpGXLZThLSk0oI4i8be5xmX3OgeMliUV4uH+n8n3NSCR8ejXCVPlJPMJxVqtBCfP+sQReSGZpFbxwdSBYmKvoH9pUiJw0DIIguOtziGLUNPVhzIyFPuaplX6CvraQ3RxkHI5h8dkEw4Nv7MIgYlIJ6bRFLv9kng==
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvJ1hPZb8O5a/G4OKMOWpIqvnhBGEVx/okH7vDChjC+cd7DHSX64t/b40eMWnfFtIYyN+7ORyPf9aaSquR//0j0LvPUwGPhx4TBSXRJGcEeuD4yTQDtcgOBaYIE8KIiAXCfaDLL8deT+t/scKKzIcfycpSlWYglAzywgkhQ3FSPfFhpHBniLzMpM9KoJU60wqRDLrT44qYg3iqjMjG0URaAd944r7yZyisyH1/Zy7JeqMPEsnPxGqNJJUtdRqZtT2XJ2iVy5lzLF655LZIo1oBg3xG6vV8JKx18JO5YUpLhJHVXHQhGy58LrsO0b6EpGPlGg/piH1nyDeEJyWg0SNFQIDAQAB
+  notifyUrl: http://3pq8jz.natappfree.cc/webService/alipay/callback
+  signType: RSA2
+  logPath: /alipayLog
+  charset: UTF-8
+  gatewayUrl:  https://openapi.alipay.com/gateway.do#网关
+  format: json #返回数据格式

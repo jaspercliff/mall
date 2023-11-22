@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jasper.mapper.GoodsAttributeCategoryMapper">
+
+    <resultMap id="BaseResultMap" type="com.jasper.pojo.GoodsAttributeCategory">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="attributeCount" column="attribute_count" jdbcType="INTEGER"/>
+            <result property="paramCount" column="param_count" jdbcType="INTEGER"/>
+    </resultMap>
+<!--    实体类一定要有无参构造方法 会调用无参构造方法来实例化对象-->
+    <resultMap id="ListWithAttrMap" type="com.jasper.vo.GoodsAttributeCategoryVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <collection property="attributeList" columnPrefix="attr_" resultMap="BaseResultMap"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,name,attribute_count,
+        param_count
+    </sql>
+
+    <update id="subOneAttr">
+        update  goods_attribute_category set attribute_count=attribute_count-1 where id = #{id}
+    </update>
+    <update id="subOneParam">
+        update  goods_attribute_category set  param_count=param_count-1 where id = #{id}
+    </update>
+    <select id="getListWithAttr" resultMap="ListWithAttrMap">
+        select
+            gac.id,gac.name,
+            ga.id attr_id,
+            ga.name attr_name
+        from goods_attribute_category gac
+                 left join goods_attribute ga
+                           on gac.id = ga.product_attribute_category_id
+                               and ga.type = 1;
+    </select>
+</mapper>

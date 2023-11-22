@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jasper.mapper.GoodsMapper">
+
+    <resultMap id="BaseResultMap" type="com.jasper.pojo.Goods">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="brandId" column="brand_id" jdbcType="BIGINT"/>
+            <result property="goodCategoryId" column="good_category_id" jdbcType="BIGINT"/>
+            <result property="goodAttributeCategoryId" column="good_attribute_category_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="picture" column="picture" jdbcType="VARCHAR"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+            <result property="isPublished" column="is_published" jdbcType="INTEGER"/>
+            <result property="isNew" column="is_new" jdbcType="INTEGER"/>
+            <result property="isRecommend" column="is_recommend" jdbcType="INTEGER"/>
+            <result property="isVerify" column="is_verify" jdbcType="INTEGER"/>
+            <result property="sort" column="sort" jdbcType="INTEGER"/>
+            <result property="sale" column="sale" jdbcType="INTEGER"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="stock" column="stock" jdbcType="INTEGER"/>
+            <result property="lowStock" column="low_stock" jdbcType="INTEGER"/>
+            <result property="weight" column="weight" jdbcType="DECIMAL"/>
+            <result property="keywords" column="keywords" jdbcType="VARCHAR"/>
+            <result property="promotionStartTime" column="promotion_start_time" jdbcType="TIMESTAMP"/>
+            <result property="promotionEndTime" column="promotion_end_time" jdbcType="TIMESTAMP"/>
+            <result property="promotionPerLimit" column="promotion_per_limit" jdbcType="INTEGER"/>
+            <result property="promotionType" column="promotion_type" jdbcType="INTEGER"/>
+            <result property="promotionPrice" column="promotion_price" jdbcType="DECIMAL"/>
+            <result property="giftGrowth"  column="gift_growth" jdbcType="INTEGER"/>
+            <result property="giftPoint" column="gift_point" jdbcType="INTEGER"/>
+            <result property="pointLimit" column="point_limit" jdbcType="INTEGER"/>
+            <result property="isPostFree" column="is_post_free" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,brand_id,good_category_id,good_attribute_category_id
+        name,picture,is_deleted,
+        is_published,is_new,is_recommend,
+        is_verify,sort,sale,
+        price,stock,low_stock,
+        weight,keywords,promotion_start_time,
+        promotion_end_time,promotion_per_limit,promotion_type,promotion_price
+    </sql>
+</mapper>
