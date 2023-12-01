@@ -4,4 +4,4 @@
 - springSecurity
 - redis
 - mysql 8.0.32
-- asd
+- vue3
