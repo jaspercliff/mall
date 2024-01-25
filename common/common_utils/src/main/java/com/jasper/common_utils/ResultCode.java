@@ -1,5 +1,6 @@
 package com.jasper.common_utils;
 
+import lombok.Data;
 import lombok.Getter;
 
 /**
